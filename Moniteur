@@ -1,0 +1,33 @@
+package Imprimante;
+
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class Moniteur {
+ private boolean etatImpr =true;// dispo
+ private final ReentrantLock L = new ReentrantLock();
+ private final Condition V=L.newCondition(); 
+	void Allouer()throws InterruptedException
+	{
+		L.lock();
+		try {
+		while(etatImpr==false) V.await();
+			
+		etatImpr=false;
+		System.out.println("je demande un impr");
+		}
+		finally{L.unlock();}
+ }
+	boolean getEtat()
+	{return etatImpr;}
+	void Liberer()throws InterruptedException
+	{
+		L.lock();
+		try {
+		etatImpr=true; // dispo
+		V.signal();
+		System.out.println("je libere un impr");
+		}
+		finally{L.unlock();}
+ }
+}
