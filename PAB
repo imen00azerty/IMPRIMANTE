@@ -1,0 +1,31 @@
+package Imprimante;
+
+public class PAB extends Thread{
+	Moniteur A ; Moniteur B;
+	PAB(Moniteur A , Moniteur B)
+	{
+		this.A=A;
+		this.B=B;
+	}
+	public void run()
+	{ if(A.getEtat()==true) {
+		try {
+			A.Allouer();
+			A.Liberer();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	else {
+		try {
+		B.Allouer();
+		B.Liberer();
+	
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+	}}
