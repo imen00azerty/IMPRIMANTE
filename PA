@@ -1,0 +1,17 @@
+package Imprimante;
+
+public class PA extends Thread {
+	Moniteur A;
+PA(Moniteur A){this.A=A;}
+public void run()
+{
+	try {
+		A.Allouer();
+		A.Liberer();
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	}
+}
