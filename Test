@@ -1,17 +1,1 @@
-package PQR;
 
-import java.util.concurrent.SynchronousQueue;
-
-public class Test {
-public static void main(String args[])
-{SynchronousQueue<Integer> c2=new SynchronousQueue<Integer> ();
-SynchronousQueue<Integer> c1=new SynchronousQueue<Integer>() ;
-	P p1=new P(c1);
-	Q q1=new Q(c1,c2);
-	R r1=new R(c2);
-	p1.start();
-	q1.start();
-	r1.start();
-
-}
-}
